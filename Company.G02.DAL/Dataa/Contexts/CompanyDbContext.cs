@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Company.G02.DAL.Dataa.Contexts
 {
-    internal class CompanyDbContext : DbContext
+    public class CompanyDbContext : DbContext
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
