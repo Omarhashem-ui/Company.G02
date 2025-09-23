@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Company.G02.BLL.Repository
 {
-    internal class DepartmentRepository : IDepartmentRepository
+    public class DepartmentRepository : IDepartmentRepository
     {
-        private CompanyDbContext _context { get; set; }
-        public DepartmentRepository()
+        private readonly CompanyDbContext _context;
+        public DepartmentRepository(CompanyDbContext companyDbContext)
         {
-            _context = new CompanyDbContext();
+            _context =  companyDbContext;
         }
         public IEnumerable<Department> GetAll()
         {
