@@ -1,4 +1,4 @@
-﻿@model Department
+﻿@model Employee
 @{
     ViewData["Title"] = "Details";
 }
@@ -9,10 +9,9 @@
 <br />
 
 <form asp-action="Details">
-    <partial name="DeptPartialView/_DeleteDetailsDeptPartialView" />
+     <partial name="PartialView/_DeleteDetailsPartialvVew" />
     <div>
         <input type="submit" value="Edit"asp-action="Edit" class="btn btn-warning"/>
         <a asp-action="Index" class="btn btn-light">Back to list </a>
     </div>
 </form>
-

@@ -33,9 +33,7 @@
                     <th>@item.Code</th>
                     <th>@item.Name</th>
                     <th>@item.CrateAt</th>
-                     <th> <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a> </th>
-                     <th> <a asp-action="Edit"asp-route-id="@item.Id"class="btn btn-success">Update</a> </th>
-                     <th> <a asp-action="Delete"asp-route-id="@item.Id" class="btn btn-danger">Delete</a> </th>
+           <partial name="_EmpDeptView" model="@item.Id" />
                 </tr>
             }
         </tbody>

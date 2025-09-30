@@ -1,4 +1,4 @@
-﻿@model Department
+﻿@model Employee
 @{
     ViewData["Title"] = "Delete";
 }
@@ -9,7 +9,13 @@
 <br />
 
 <form asp-action="Delete">
-     <partial name="DeptPartialView/_DeleteDetailsDeptPartialView" />
+  
+  <partial name="PartialView/_DeleteDetailsPartialvVew" />
+    <div class="my-3">
+        <label asp-for="CreateAt" class="col-form-label"></label>
+      <input asp-for="CreateAt" class="form-control"/>
+    
+    </div>
     <div>
         <input type="submit" value="Delete" class="btn btn-danger"/>
         <a asp-action="Index" class="btn btn-light">Back to list </a>

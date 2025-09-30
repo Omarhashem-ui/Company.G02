@@ -61,27 +61,37 @@ namespace Company.G02.Mvc.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
-            //if (id == null || id == 0)
-            //{
-            //    return BadRequest("Invalid Id");
-            //}
+            if (id == null || id == 0)
+            {
+                return BadRequest("Invalid Id");
+            }
 
-            //var model = _departmentRepository.Get(id.Value);
-            //if (model == null)
-            //    return NotFound();
-            return Details(id,"Edit");
+            var model = _departmentRepository.Get(id.Value);
+            if (model == null)
+                return NotFound();
+            var departmentdto = new CreateDepartmentdto()
+            {
+                Code = model.Code,
+                Name = model.Name,
+                CrateAt = model.CrateAt
+            };
+            return View(departmentdto);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Department department,string action="Edit")
+        public IActionResult Edit(int id, CreateDepartmentdto department)
         {
             if (ModelState.IsValid)
             {
-                if (id != department.Id)
+               var Dept = new Department()
                 {
-                    return BadRequest("Id Mismatched");
-                }
-                var model = _departmentRepository.Update(department);
+                    Id = id,
+                    Code = department.Code,
+                    Name = department.Name,
+                    CrateAt = department.CrateAt
+               };
+                
+                var model = _departmentRepository.Update(Dept);
                 if (model > 0)
                     return RedirectToAction("Index");
             }
@@ -118,7 +128,7 @@ namespace Company.G02.Mvc.Controllers
                     return RedirectToAction("Index");
             }
 
-            return Edit(id,department, "Delete");
+            return View(department);
 
 
         }
