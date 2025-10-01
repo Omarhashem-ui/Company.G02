@@ -1,7 +1,11 @@
+using AutoMapper;
 using Company.G02.BLL.Interfaces;
 using Company.G02.BLL.Repository;
 using Company.G02.DAL.Dataa.Contexts;
+using Company.G02.Mvc.Mapping;
+using Company.G02.Mvc.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Company.G02.Mvc
 {
@@ -20,7 +24,10 @@ namespace Company.G02.Mvc
                 options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));
             }); // allow Dependancy Injection (DI) for CompanyDbContext
 
-
+            builder.Services.AddAutoMapper(M=>M.AddProfile(new EmployeeProfile())); // allow Dependancy Injection (DI) for AutoMapper
+            builder.Services.AddScoped<IScopedServices, ScopedServices>();
+            builder.Services.AddSingleton<ISingeltonServices, SingeltonServices>();
+            builder.Services.AddTransient<ITransientServices, TransientServices>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

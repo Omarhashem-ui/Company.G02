@@ -12,5 +12,6 @@ namespace Company.G02.DAL.Models
         public string Code { get; set; }
         public string Name { get; set; }
         public DateTime CrateAt { get; set; }
+        public IEnumerable<Employee> Employees { get; set; }
     }
 }

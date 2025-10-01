@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Company.G02.DAL.Models;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Company.G02.Mvc.Dtos
@@ -6,7 +7,7 @@ namespace Company.G02.Mvc.Dtos
     public class CreateEmployeedto
     {
         [Required(ErrorMessage = "Name is required")]
-        public string Name { get; set; }
+        public string EmpName { get; set; }
 
         [Range(12, 60, ErrorMessage = "Age must be between 22 and 60")]
         public int? Age { get; set; }
@@ -28,5 +29,8 @@ namespace Company.G02.Mvc.Dtos
         {
             get; set;
         }
+        [DisplayName("Department")]
+        public int? DapartmentId { get; set; }
+       
     }
 }

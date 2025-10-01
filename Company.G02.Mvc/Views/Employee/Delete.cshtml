@@ -3,21 +3,11 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<h1>Delete Employee</h1>
 
-<br />
-<br />
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <partial name="PartialView/_DeleteDetailsPartialvVew" model="Model" />
 
-<form asp-action="Delete">
-  
-  <partial name="PartialView/_DeleteDetailsPartialvVew" />
-    <div class="my-3">
-        <label asp-for="CreateAt" class="col-form-label"></label>
-      <input asp-for="CreateAt" class="form-control"/>
-    
-    </div>
-    <div>
-        <input type="submit" value="Delete" class="btn btn-danger"/>
-        <a asp-action="Index" class="btn btn-light">Back to list </a>
-    </div>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>
